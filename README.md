@@ -11,9 +11,16 @@ Main parts of the system are:
 5. Terminal (kiosk) based solution (.net3.5 compact framework)
 6. Terminal (kiosk) based solution (.net4.6.1)
 7. Server side Service based solution (.net4.6.1)
+8. Analyst (.net4.6.1)
+9. Currency Rates Tool service (.net4.6.1)
+10. Documents ("Tutorial for Creating License", "Creating Plugin (non-completed)", "C# Code Style", "IC Development info")
+11. Demonstration and empty Databases
+12. Test data for local testing
+13. Publishes folder which contains a debug build for local testing
 
 <b>Warning! For to build .net3.5CF solutions need a Visual Studio 2008!</b>
 Also .net3.5CF solutions were developed for a Zebra MK3100 kiosk and didn't tested to work with any others.
+Also the main solution contains code for work with custom ADO.Net based CRM and code for work with Entity Framework.
 
 Deploying (for .net4.6.1 for example):
 1. Start and build a SDK solution
