@@ -12,7 +12,8 @@ Main parts of the system are:
 6. Terminal (kiosk) based solution (.net4.6.1)
 7. Server side Service based solution (.net4.6.1)
 
-<b>Warning! For to build .net3.5CF solutions need a Visual Studio 2008</b>
+<b>Warning! For to build .net3.5CF solutions need a Visual Studio 2008!</b>
+Also .net3.5CF solutions were developed for a Zebra MK3100 kiosk and didn't tested to work with any others.
 
 Deploying (for .net4.6.1 for example):
 1. Start and build a SDK solution
