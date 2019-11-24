@@ -12,6 +12,8 @@ Main parts of the system are:
 6. Terminal (kiosk) based solution (.net4.6.1)
 7. Server side Service based solution (.net4.6.1)
 
+Warning! For to build .net3.5CF solutions need a Visual Studio 2008
+
 Deploying (for .net4.6.1 for example):
 1. Start and build a SDK solution
 2. Start and build a License Manager solution
