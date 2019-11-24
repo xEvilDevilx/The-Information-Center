@@ -20,3 +20,5 @@ Deploying (for .net4.6.1 for example):
 4. Start and build a server side Windows Service solution
 5. Install, configure (set connection string to database in app config file) and start a server side Service
 6. Copy to the Terminal a built terminal solution and start it
+
+Sorry, but included docs has a russian language not translated to english
