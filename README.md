@@ -1,6 +1,8 @@
 # The Information Center
 The Information Center is an information kiosk based system. The main purposes is to show a retail items information (image, price, description, advertising, etc) by scan of the retail item barcode.
 
+Primary I developed this information system for a commercial buisness purposes. This is a completed working system.
+
 Main parts of the system are:
 1. SDK (.net3.5 compact framework)
 2. SDK (.net4.6.1)
