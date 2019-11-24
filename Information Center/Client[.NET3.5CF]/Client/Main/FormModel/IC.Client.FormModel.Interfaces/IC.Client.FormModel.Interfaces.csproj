@@ -1,0 +1,108 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{926A0A40-F51B-4588-AB89-2921D841BB64}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IC.Client.FormModel.Interfaces</RootNamespace>
+    <AssemblyName>IC.Client.FormModel.Interfaces</AssemblyName>
+    <ProjectTypeGuids>{4D628B5B-2FBC-4AA6-8C16-197242AEB884};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PlatformFamilyName>WindowsCE</PlatformFamilyName>
+    <PlatformID>ee1a5493-cfa7-44ef-87b8-fcf302a497e5</PlatformID>
+    <OSVersion>7.0</OSVersion>
+    <DeployDirSuffix>IC.Client.FormModel.Interfaces</DeployDirSuffix>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <NativePlatformName>MK3100c70PSDK</NativePlatformName>
+    <FormFactorID>
+    </FormFactorID>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;$(PlatformFamilyName)</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;$(PlatformFamilyName)</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\IAdvancedList.cs" />
+    <Compile Include="ControlModel\IAdvertisingControl.cs" />
+    <Compile Include="ControlModel\Base\IControl.cs" />
+    <Compile Include="ControlModel\Base\IFont.cs" />
+    <Compile Include="ControlModel\IProductByShareControl.cs" />
+    <Compile Include="ControlModel\IProductInfoControl.cs" />
+    <Compile Include="ControlModel\IProductNotFoundControl.cs" />
+    <Compile Include="ControlModel\IScanControl.cs" />
+    <Compile Include="ControlModel\ISettingsControl.cs" />
+    <Compile Include="ControlModel\ISharesSalesControl.cs" />
+    <Compile Include="ControlModel\IUnAvailableControl.cs" />
+    <Compile Include="ControlModel\IWaitControl.cs" />
+    <Compile Include="IKeyHook.cs" />
+    <Compile Include="IPluginManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\IC.Client.DataLayer\IC.Client.DataLayer.csproj">
+      <Project>{D2691A14-5A69-4864-B113-D8151ED618B5}</Project>
+      <Name>IC.Client.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IC.Client.View.Components\IC.Client.View.Components.csproj">
+      <Project>{084AAA36-1C52-4AF6-885C-9CDA53E70C73}</Project>
+      <Name>IC.Client.View.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IC.Client.FormModel.Base\IC.Client.FormModel.Base.csproj">
+      <Project>{4346D586-58DA-4DAC-9D7A-07770FD3BE52}</Project>
+      <Name>IC.Client.FormModel.Base</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}">
+        <HostingProcess disable="1" />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>start /MIN XCopy "$(TargetDir)*.dll" "$(SolutionDir)\BUILD\IC_Client\" /S /R /Y /I /E
+start /MIN XCopy "$(TargetDir)*.xml" "$(SolutionDir)\BUILD\IC_Client\" /S /R /Y /I /E
+start /MIN XCopy "$(TargetDir)*.config" "$(SolutionDir)\BUILD\IC_Client\" /S /R /Y /I /E</PostBuildEvent>
+  </PropertyGroup>
+</Project>

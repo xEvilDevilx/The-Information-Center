@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{402CF47D-4049-4699-8393-0063798165D2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>IC.Client.Plugins.View.Tests</RootNamespace>
+    <AssemblyName>IC.Client.Plugins.View.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="LangTypes.cs" />
+    <Compile Include="TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Client\Main\BusinessLogic\IC.Client.BusinessLogic.Interfaces\IC.Client.BusinessLogic.Interfaces.csproj">
+      <Project>{4c8b2bd2-83c3-44a5-bba6-9b44203b9aa0}</Project>
+      <Name>IC.Client.BusinessLogic.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Client\Main\FormModel\IC.Client.FormModel.Base\IC.Client.FormModel.Base.csproj">
+      <Project>{f6a67912-03d0-4dd8-b39b-00e48bf5861e}</Project>
+      <Name>IC.Client.FormModel.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Client\Main\FormModel\IC.Client.FormModel.Interfaces\IC.Client.FormModel.Interfaces.csproj">
+      <Project>{F26D64E7-C323-4557-B3CD-A582AA576388}</Project>
+      <Name>IC.Client.FormModel.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Client\Main\FormModel\IC.Client.FormModel\IC.Client.FormModel.csproj">
+      <Project>{308DF5F2-D393-47D0-8142-77BE9F10F88E}</Project>
+      <Name>IC.Client.FormModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Client\Main\IC.Client.DataLayer\IC.Client.DataLayer.csproj">
+      <Project>{e5d7fc70-a7d3-41a5-91e2-0387e831d08f}</Project>
+      <Name>IC.Client.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Client\Plugins\IC.Client.Plugins.StandartViewPlugin\IC.Client.Plugins.StandartViewPlugin.csproj">
+      <Project>{00f74563-0f19-43a0-8b89-b1fd6b080020}</Project>
+      <Name>IC.Client.Plugins.StandartViewPlugin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\3.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

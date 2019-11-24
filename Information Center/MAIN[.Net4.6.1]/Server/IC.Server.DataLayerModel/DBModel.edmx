@@ -1,0 +1,657 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ICDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ICDBModelStoreContainer">
+    <EntitySet Name="Advertising" EntityType="ICDBModel.Store.Advertising" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Config" EntityType="ICDBModel.Store.Config" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ContentTranslation" EntityType="ICDBModel.Store.ContentTranslation" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Currency" EntityType="ICDBModel.Store.Currency" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CurrencyRate" EntityType="ICDBModel.Store.CurrencyRate" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EventLog" EntityType="ICDBModel.Store.EventLog" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Language" EntityType="ICDBModel.Store.Language" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Product" EntityType="ICDBModel.Store.Product" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductAction" EntityType="ICDBModel.Store.ProductAction" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductLog" EntityType="ICDBModel.Store.ProductLog" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductPrice" EntityType="ICDBModel.Store.ProductPrice" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RetailAction" EntityType="ICDBModel.Store.RetailAction" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Store" EntityType="ICDBModel.Store.Store" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StoreAction" EntityType="ICDBModel.Store.StoreAction" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StoreAdvertising" EntityType="ICDBModel.Store.StoreAdvertising" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SystemTranslation" EntityType="ICDBModel.Store.SystemTranslation" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Terminal" EntityType="ICDBModel.Store.Terminal" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TerminalCurrency" EntityType="ICDBModel.Store.TerminalCurrency" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TerminalLanguage" EntityType="ICDBModel.Store.TerminalLanguage" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Advertising">
+    <Key>
+      <PropertyRef Name="AdvertisingID" />
+    </Key>
+    <Property Name="AdvertisingID" Type="int" Nullable="false" />
+    <Property Name="ActivityStatus" Type="tinyint" Nullable="false" />
+    <Property Name="Image" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Config">
+    <Key>
+      <PropertyRef Name="ConfigID" />
+      <PropertyRef Name="StoreID" />
+      <PropertyRef Name="TerminalID" />
+    </Key>
+    <Property Name="ConfigID" Type="int" Nullable="false" />
+    <Property Name="StoreID" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="TerminalID" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="ConfigValue" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContentTranslation">
+    <Key>
+      <PropertyRef Name="TranslationID" />
+      <PropertyRef Name="LanguageCode" />
+    </Key>
+    <Property Name="TranslationID" Type="int" Nullable="false" />
+    <Property Name="LanguageCode" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="TranslationValue" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="CurrencyCode" />
+    </Key>
+    <Property Name="CurrencyCode" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="CaptionID" Type="int" Nullable="false" />
+    <Property Name="Image" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CurrencyRate">
+    <Key>
+      <PropertyRef Name="CurrencyCode" />
+      <PropertyRef Name="StoreID" />
+    </Key>
+    <Property Name="StoreID" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="CurrencyCode" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="DateBegin" Type="datetime" Nullable="false" />
+    <Property Name="RateValue" Type="decimal" Nullable="false" Precision="20" Scale="10" />
+  </EntityType>
+  <EntityType Name="EventLog">
+    <Key>
+      <PropertyRef Name="EventID" />
+      <PropertyRef Name="TerminalID" />
+    </Key>
+    <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TerminalID" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="EventDataTime" Type="datetime" Nullable="false" />
+    <Property Name="EventType" Type="tinyint" Nullable="false" />
+    <Property Name="EventSource" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EventDetails" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="LanguageCode" />
+    </Key>
+    <Property Name="LanguageCode" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="CaptionID" Type="int" Nullable="false" />
+    <Property Name="Image" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+      <PropertyRef Name="BarcodeValue" />
+    </Key>
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="BarcodeValue" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="ActivityStatus" Type="tinyint" Nullable="false" />
+    <Property Name="Article" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CaptionID" Type="int" Nullable="false" />
+    <Property Name="DescriptionID" Type="int" Nullable="false" />
+    <Property Name="Image" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductAction">
+    <Key>
+      <PropertyRef Name="StoreID" />
+      <PropertyRef Name="ProductID" />
+      <PropertyRef Name="RetailActionID" />
+    </Key>
+    <Property Name="StoreID" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="RetailActionID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductLog">
+    <Key>
+      <PropertyRef Name="ProductLogID" />
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductLogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="ScanDate" Type="datetime" Nullable="false" />
+    <Property Name="LanguageCode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CurrencyCode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TerminalID" Type="nvarchar" Nullable="false" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="ProductPrice">
+    <Key>
+      <PropertyRef Name="StoreID" />
+      <PropertyRef Name="ProductID" />
+      <PropertyRef Name="DateBegin" />
+    </Key>
+    <Property Name="StoreID" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="DateBegin" Type="datetime" Nullable="false" />
+    <Property Name="DateEnd" Type="datetime" Nullable="false" />
+    <Property Name="PriceValue" Type="decimal" Nullable="false" Precision="20" Scale="10" />
+  </EntityType>
+  <EntityType Name="RetailAction">
+    <Key>
+      <PropertyRef Name="RetailActionID" />
+    </Key>
+    <Property Name="RetailActionID" Type="int" Nullable="false" />
+    <Property Name="DateBegin" Type="datetime" Nullable="false" />
+    <Property Name="DateEnd" Type="datetime" Nullable="false" />
+    <Property Name="ActivityStatus" Type="tinyint" Nullable="false" />
+    <Property Name="CaptionID" Type="int" Nullable="false" />
+    <Property Name="DescriptionID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Store">
+    <Key>
+      <PropertyRef Name="StoreID" />
+    </Key>
+    <Property Name="StoreID" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="CaptionID" Type="int" Nullable="false" />
+    <Property Name="Image" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StoreAction">
+    <Key>
+      <PropertyRef Name="StoreID" />
+      <PropertyRef Name="RetailActionID" />
+    </Key>
+    <Property Name="StoreID" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="RetailActionID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StoreAdvertising">
+    <Key>
+      <PropertyRef Name="StoreID" />
+      <PropertyRef Name="TerminalID" />
+      <PropertyRef Name="AdvertisingID" />
+    </Key>
+    <Property Name="StoreID" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="TerminalID" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="AdvertisingID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SystemTranslation">
+    <Key>
+      <PropertyRef Name="TranslationID" />
+      <PropertyRef Name="LanguageCode" />
+    </Key>
+    <Property Name="TranslationID" Type="int" Nullable="false" />
+    <Property Name="LanguageCode" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="TranslationValue" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Terminal">
+    <Key>
+      <PropertyRef Name="TerminalID" />
+      <PropertyRef Name="StoreID" />
+    </Key>
+    <Property Name="TerminalID" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="StoreID" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="MacAddress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IPAddress" Type="nchar" Nullable="false" MaxLength="16" />
+    <Property Name="ActivityStatus" Type="tinyint" Nullable="false" />
+    <Property Name="TerminalUID" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TerminalVersion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TerminalCurrency">
+    <Key>
+      <PropertyRef Name="TerminalID" />
+      <PropertyRef Name="StoreID" />
+      <PropertyRef Name="CurrencyCode" />
+    </Key>
+    <Property Name="TerminalID" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="StoreID" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="CurrencyCode" Type="nvarchar" Nullable="false" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="TerminalLanguage">
+    <Key>
+      <PropertyRef Name="TerminalID" />
+      <PropertyRef Name="StoreID" />
+      <PropertyRef Name="LanguageCode" />
+    </Key>
+    <Property Name="TerminalID" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="StoreID" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="LanguageCode" Type="nvarchar" Nullable="false" MaxLength="5" />
+  </EntityType>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ICDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Advertising">
+          <Key>
+            <PropertyRef Name="AdvertisingID" />
+          </Key>
+          <Property Name="AdvertisingID" Type="Int32" Nullable="false" />
+          <Property Name="ActivityStatus" Type="Byte" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="ConfigID" />
+            <PropertyRef Name="StoreID" />
+            <PropertyRef Name="TerminalID" />
+          </Key>
+          <Property Name="ConfigID" Type="Int32" Nullable="false" />
+          <Property Name="StoreID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TerminalID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ConfigValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContentTranslation">
+          <Key>
+            <PropertyRef Name="TranslationID" />
+            <PropertyRef Name="LanguageCode" />
+          </Key>
+          <Property Name="TranslationID" Type="Int32" Nullable="false" />
+          <Property Name="LanguageCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TranslationValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="CurrencyCode" />
+          </Key>
+          <Property Name="CurrencyCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CaptionID" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CurrencyRate">
+          <Key>
+            <PropertyRef Name="CurrencyCode" />
+            <PropertyRef Name="StoreID" />
+          </Key>
+          <Property Name="StoreID" Type="String" Nullable="false" FixedLength="false" MaxLength="5" Unicode="true" />
+          <Property Name="CurrencyCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateBegin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RateValue" Type="Decimal" Precision="20" Scale="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventLog">
+          <Key>
+            <PropertyRef Name="EventID" />
+            <PropertyRef Name="TerminalID" />
+          </Key>
+          <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerminalID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EventDataTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EventType" Type="Byte" Nullable="false" />
+          <Property Name="EventSource" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EventDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="LanguageCode" />
+          </Key>
+          <Property Name="LanguageCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CaptionID" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="BarcodeValue" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="BarcodeValue" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActivityStatus" Type="Byte" Nullable="false" />
+          <Property Name="Article" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CaptionID" Type="Int32" Nullable="false" />
+          <Property Name="DescriptionID" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductAction">
+          <Key>
+            <PropertyRef Name="StoreID" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="RetailActionID" />
+          </Key>
+          <Property Name="StoreID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="RetailActionID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductLog">
+          <Key>
+            <PropertyRef Name="ProductLogID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ScanDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LanguageCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CurrencyCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TerminalID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductPrice">
+          <Key>
+            <PropertyRef Name="StoreID" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="DateBegin" />
+          </Key>
+          <Property Name="StoreID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="DateBegin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PriceValue" Type="Decimal" Precision="20" Scale="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RetailAction">
+          <Key>
+            <PropertyRef Name="RetailActionID" />
+          </Key>
+          <Property Name="RetailActionID" Type="Int32" Nullable="false" />
+          <Property Name="DateBegin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ActivityStatus" Type="Byte" Nullable="false" />
+          <Property Name="CaptionID" Type="Int32" Nullable="false" />
+          <Property Name="DescriptionID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="StoreID" />
+          </Key>
+          <Property Name="StoreID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CaptionID" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StoreAction">
+          <Key>
+            <PropertyRef Name="StoreID" />
+            <PropertyRef Name="RetailActionID" />
+          </Key>
+          <Property Name="StoreID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RetailActionID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StoreAdvertising">
+          <Key>
+            <PropertyRef Name="StoreID" />
+            <PropertyRef Name="TerminalID" />
+            <PropertyRef Name="AdvertisingID" />
+          </Key>
+          <Property Name="StoreID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TerminalID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdvertisingID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemTranslation">
+          <Key>
+            <PropertyRef Name="TranslationID" />
+            <PropertyRef Name="LanguageCode" />
+          </Key>
+          <Property Name="TranslationID" Type="Int32" Nullable="false" />
+          <Property Name="LanguageCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TranslationValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Terminal">
+          <Key>
+            <PropertyRef Name="TerminalID" />
+            <PropertyRef Name="StoreID" />
+          </Key>
+          <Property Name="TerminalID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StoreID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MacAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IPAddress" Type="String" MaxLength="16" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ActivityStatus" Type="Byte" Nullable="false" />
+          <Property Name="TerminalUID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TerminalVersion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TerminalCurrency">
+          <Key>
+            <PropertyRef Name="TerminalID" />
+            <PropertyRef Name="StoreID" />
+            <PropertyRef Name="CurrencyCode" />
+          </Key>
+          <Property Name="TerminalID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StoreID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CurrencyCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TerminalLanguage">
+          <Key>
+            <PropertyRef Name="TerminalID" />
+            <PropertyRef Name="StoreID" />
+            <PropertyRef Name="LanguageCode" />
+          </Key>
+          <Property Name="TerminalID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StoreID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LanguageCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ICDBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Advertising" EntityType="Self.Advertising" />
+          <EntitySet Name="Config" EntityType="Self.Config" />
+          <EntitySet Name="ContentTranslation" EntityType="Self.ContentTranslation" />
+          <EntitySet Name="Currency" EntityType="Self.Currency" />
+          <EntitySet Name="CurrencyRate" EntityType="Self.CurrencyRate" />
+          <EntitySet Name="EventLog" EntityType="Self.EventLog" />
+          <EntitySet Name="Language" EntityType="Self.Language" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="ProductAction" EntityType="Self.ProductAction" />
+          <EntitySet Name="ProductLog" EntityType="Self.ProductLog" />
+          <EntitySet Name="ProductPrice" EntityType="Self.ProductPrice" />
+          <EntitySet Name="RetailAction" EntityType="Self.RetailAction" />
+          <EntitySet Name="Store" EntityType="Self.Store" />
+          <EntitySet Name="StoreAction" EntityType="Self.StoreAction" />
+          <EntitySet Name="StoreAdvertising" EntityType="Self.StoreAdvertising" />
+          <EntitySet Name="SystemTranslation" EntityType="Self.SystemTranslation" />
+          <EntitySet Name="Terminal" EntityType="Self.Terminal" />
+          <EntitySet Name="TerminalCurrency" EntityType="Self.TerminalCurrency" />
+          <EntitySet Name="TerminalLanguage" EntityType="Self.TerminalLanguage" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ICDBModelStoreContainer" CdmEntityContainer="ICDBContext">
+    <EntitySetMapping Name="Advertising">
+      <EntityTypeMapping TypeName="IsTypeOf(ICDBModel.Advertising)">
+        <MappingFragment StoreEntitySet="Advertising">
+          <ScalarProperty Name="AdvertisingID" ColumnName="AdvertisingID" />
+          <ScalarProperty Name="ActivityStatus" ColumnName="ActivityStatus" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config">
+      <EntityTypeMapping TypeName="IsTypeOf(ICDBModel.Config)">
+        <MappingFragment StoreEntitySet="Config">
+          <ScalarProperty Name="ConfigID" ColumnName="ConfigID" />
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+          <ScalarProperty Name="ConfigValue" ColumnName="ConfigValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContentTranslation">
+      <EntityTypeMapping TypeName="IsTypeOf(ICDBModel.ContentTranslation)">
+        <MappingFragment StoreEntitySet="ContentTranslation">
+          <ScalarProperty Name="TranslationID" ColumnName="TranslationID" />
+          <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+          <ScalarProperty Name="TranslationValue" ColumnName="TranslationValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Currency">
+      <EntityTypeMapping TypeName="IsTypeOf(ICDBModel.Currency)">
+        <MappingFragment StoreEntitySet="Currency">
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="CaptionID" ColumnName="CaptionID" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrencyRate">
+      <EntityTypeMapping TypeName="IsTypeOf(ICDBModel.CurrencyRate)">
+        <MappingFragment StoreEntitySet="CurrencyRate">
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="DateBegin" ColumnName="DateBegin" />
+          <ScalarProperty Name="RateValue" ColumnName="RateValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventLog">
+      <EntityTypeMapping TypeName="IsTypeOf(ICDBModel.EventLog)">
+        <MappingFragment StoreEntitySet="EventLog">
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+          <ScalarProperty Name="EventDataTime" ColumnName="EventDataTime" />
+          <ScalarProperty Name="EventType" ColumnName="EventType" />
+          <ScalarProperty Name="EventSource" ColumnName="EventSource" />
+          <ScalarProperty Name="EventDetails" ColumnName="EventDetails" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Language">
+      <EntityTypeMapping TypeName="IsTypeOf(ICDBModel.Language)">
+        <MappingFragment StoreEntitySet="Language">
+          <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+          <ScalarProperty Name="CaptionID" ColumnName="CaptionID" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="IsTypeOf(ICDBModel.Product)">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="BarcodeValue" ColumnName="BarcodeValue" />
+          <ScalarProperty Name="ActivityStatus" ColumnName="ActivityStatus" />
+          <ScalarProperty Name="Article" ColumnName="Article" />
+          <ScalarProperty Name="CaptionID" ColumnName="CaptionID" />
+          <ScalarProperty Name="DescriptionID" ColumnName="DescriptionID" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductAction">
+      <EntityTypeMapping TypeName="IsTypeOf(ICDBModel.ProductAction)">
+        <MappingFragment StoreEntitySet="ProductAction">
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="RetailActionID" ColumnName="RetailActionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductLog">
+      <EntityTypeMapping TypeName="IsTypeOf(ICDBModel.ProductLog)">
+        <MappingFragment StoreEntitySet="ProductLog">
+          <ScalarProperty Name="ProductLogID" ColumnName="ProductLogID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ScanDate" ColumnName="ScanDate" />
+          <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductPrice">
+      <EntityTypeMapping TypeName="IsTypeOf(ICDBModel.ProductPrice)">
+        <MappingFragment StoreEntitySet="ProductPrice">
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="DateBegin" ColumnName="DateBegin" />
+          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+          <ScalarProperty Name="PriceValue" ColumnName="PriceValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RetailAction">
+      <EntityTypeMapping TypeName="IsTypeOf(ICDBModel.RetailAction)">
+        <MappingFragment StoreEntitySet="RetailAction">
+          <ScalarProperty Name="RetailActionID" ColumnName="RetailActionID" />
+          <ScalarProperty Name="DateBegin" ColumnName="DateBegin" />
+          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+          <ScalarProperty Name="ActivityStatus" ColumnName="ActivityStatus" />
+          <ScalarProperty Name="CaptionID" ColumnName="CaptionID" />
+          <ScalarProperty Name="DescriptionID" ColumnName="DescriptionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Store">
+      <EntityTypeMapping TypeName="IsTypeOf(ICDBModel.Store)">
+        <MappingFragment StoreEntitySet="Store">
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="CaptionID" ColumnName="CaptionID" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoreAction">
+      <EntityTypeMapping TypeName="IsTypeOf(ICDBModel.StoreAction)">
+        <MappingFragment StoreEntitySet="StoreAction">
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="RetailActionID" ColumnName="RetailActionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoreAdvertising">
+      <EntityTypeMapping TypeName="IsTypeOf(ICDBModel.StoreAdvertising)">
+        <MappingFragment StoreEntitySet="StoreAdvertising">
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+          <ScalarProperty Name="AdvertisingID" ColumnName="AdvertisingID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemTranslation">
+      <EntityTypeMapping TypeName="IsTypeOf(ICDBModel.SystemTranslation)">
+        <MappingFragment StoreEntitySet="SystemTranslation">
+          <ScalarProperty Name="TranslationID" ColumnName="TranslationID" />
+          <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+          <ScalarProperty Name="TranslationValue" ColumnName="TranslationValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Terminal">
+      <EntityTypeMapping TypeName="IsTypeOf(ICDBModel.Terminal)">
+        <MappingFragment StoreEntitySet="Terminal">
+          <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="ActivityStatus" ColumnName="ActivityStatus" />
+          <ScalarProperty Name="TerminalUID" ColumnName="TerminalUID" />
+          <ScalarProperty Name="TerminalVersion" ColumnName="TerminalVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TerminalCurrency">
+      <EntityTypeMapping TypeName="IsTypeOf(ICDBModel.TerminalCurrency)">
+        <MappingFragment StoreEntitySet="TerminalCurrency">
+          <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TerminalLanguage">
+      <EntityTypeMapping TypeName="IsTypeOf(ICDBModel.TerminalLanguage)">
+        <MappingFragment StoreEntitySet="TerminalLanguage">
+          <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

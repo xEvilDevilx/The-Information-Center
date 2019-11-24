@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AE037B1C-8FC7-4977-80A8-5F8B86AA3DB1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IC.CurrencyRatesTool.View.Service</RootNamespace>
+    <AssemblyName>Currency Rates Tool Service</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IC.SDK">
+      <HintPath>..\..\Build\ICLibs\IC.SDK.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CurrencyRatesService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CurrencyRatesService.Designer.cs">
+      <DependentUpon>CurrencyRatesService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DB\IC.DB.Interfaces\IC.DB.Interfaces.csproj">
+      <Project>{81c0f998-da1d-4500-9c62-36bc615d4678}</Project>
+      <Name>IC.DB.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DB\ICSQL\MSSQL\IC.DB.ICSQL.MSSQL.DataProvider\IC.DB.ICSQL.MSSQL.DataProvider.csproj">
+      <Project>{2a991eca-6196-408a-9219-e6e76277eb1a}</Project>
+      <Name>IC.DB.ICSQL.MSSQL.DataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IC.CurrencyRatesTool.Interfaces\IC.CurrencyRatesTool.Interfaces.csproj">
+      <Project>{17e3ef51-7f11-4033-b415-d2a8f90825be}</Project>
+      <Name>IC.CurrencyRatesTool.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IC.CurrencyRatesTool.MainWorker\IC.CurrencyRatesTool.MainWorker.csproj">
+      <Project>{1466c2c9-a4dc-4f30-8743-7882f7c275c0}</Project>
+      <Name>IC.CurrencyRatesTool.MainWorker</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>start /MIN XCopy "$(TargetDir)*.exe" "$(SolutionDir)\Build\CurrencyRatesTool\Service\" /S /R /Y
+start /MIN XCopy "$(TargetDir)*.dll" "$(SolutionDir)\Build\CurrencyRatesTool\Service\" /S /R /Y /I /E
+start /MIN XCopy "$(TargetDir)*.xml" "$(SolutionDir)\Build\CurrencyRatesTool\Service\" /S /R /Y /I /E
+start /MIN XCopy "$(TargetDir)*.config" "$(SolutionDir)\Build\CurrencyRatesTool\Service\" /S /R /Y /I /E</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

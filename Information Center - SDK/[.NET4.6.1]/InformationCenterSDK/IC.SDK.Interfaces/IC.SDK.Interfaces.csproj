@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B9535A28-D535-4362-81E5-A28F61A5C71F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IC.SDK.Interfaces</RootNamespace>
+    <AssemblyName>IC.SDK.Interfaces</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\IKeyGenerator.cs" />
+    <Compile Include="Helpers\IObjectProperties.cs" />
+    <Compile Include="ISimpleTimer.cs" />
+    <Compile Include="Serialization\IBytesArraySerializer.cs" />
+    <Compile Include="Serialization\IReadFromBytesArray.cs" />
+    <Compile Include="Serialization\IReadFromStream.cs" />
+    <Compile Include="Serialization\IStreamSerializer.cs" />
+    <Compile Include="Serialization\ITypeCodes.cs" />
+    <Compile Include="Serialization\IWriteToBytesArray.cs" />
+    <Compile Include="Serialization\IWriteToStream.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IC.SDK.Base\IC.SDK.Base.csproj">
+      <Project>{74df92f1-3f92-42e4-b899-ef164da9f2c9}</Project>
+      <Name>IC.SDK.Base</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>start /MIN XCopy "$(TargetDir)*.dll" "$(SolutionDir)\BUILD\ICSDK\" /S /R /Y /I /E
+start /MIN XCopy "$(TargetDir)*.dll" "$(SolutionDir)\..\..\..\Information Center - License Manager\[.NET4.6.1]\Build\ICLM_ExtLibs\" /S /R /Y /I /E
+start /MIN XCopy "$(TargetDir)*.dll" "$(SolutionDir)\..\..\..\Information Center\MAIN[.Net4.6.1]\Build\ICLibs\" /S /R /Y /I /E</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

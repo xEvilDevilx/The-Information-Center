@@ -1,0 +1,299 @@
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+using IC.Client.DataLayer;
+using IC.Client.FormModel.Base;
+using IC.Client.FormModel.Base.Enums;
+using IC.Client.FormModel.Base.EventHandlers;
+using IC.Client.FormModel.Interfaces.ControlModel;
+
+namespace IC.Client.Plugins.StandartViewPlugin.UserControls
+{
+    /// <summary>
+    /// Presents ProductByShare control interface
+    /// 
+    /// 2017/03/05 - Created, VTyagunov
+    /// </summary>
+    [ControlType(UserControlTypes.ProductByShare)]
+    public partial class ProductByShareControl : UserControl, IProductByShareControl
+    {
+        #region Events
+
+        /// <summary>Click Control Event</summary>
+        public event ControlEventHandlers.ClickControlEventHandler ClickControlEvent;
+        /// <summary>Click Button Up Event</summary>
+        public event ControlEventHandlers.ClickButtonUpEventHandler ClickButtonUpEvent;
+        /// <summary>Click Button Down Event</summary>
+        public event ControlEventHandlers.ClickButtonDownEventHandler ClickButtonDownEvent;
+        /// <summary>Click Button Back Event</summary>
+        public event ControlEventHandlers.ClickButtonBackEventHandler ClickButtonBackEvent;
+        /// <summary>Click Button Settings Event</summary>
+        public event ControlEventHandlers.ClickButtonSettingsEventHandler ClickButtonSettingsEvent;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public ProductByShareControl()
+        {
+            InitializeComponent();
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Use for does button up action
+        /// </summary> 
+        public void BtnUp()
+        {
+            if (InvokeRequired)
+                Invoke(new Action(() => { txtProductByShareInfo.ScrollUp(); }));
+            else txtProductByShareInfo.ScrollUp();
+        }
+
+        /// <summary>
+        /// Use for does button down action
+        /// </summary>
+        public void BtnDown()
+        {
+            if (InvokeRequired)
+                Invoke(new Action(() => { txtProductByShareInfo.ScrollDown(); }));
+            else txtProductByShareInfo.ScrollDown();
+        }
+
+        /// <summary>
+        /// Use for show control
+        /// </summary>
+        public void ShowControl()
+        {
+            if (InvokeRequired)
+                Invoke(new Action(() =>
+                {
+                    Show();
+                    Hide();
+                    Show();
+                }));
+            else
+            {
+                Show();
+                Hide();
+                Show();
+            }
+        }
+
+        /// <summary>
+        /// Use for hide control
+        /// </summary>
+        public void HideControl()
+        {
+            if (InvokeRequired)
+                Invoke(new Action(() => { Hide(); }));
+            else Hide();
+        }
+        
+        /// <summary>
+        /// Button Up click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonUp_Click(object sender, System.EventArgs e)
+        {
+            if (ClickButtonUpEvent != null)
+                ClickButtonUpEvent.Invoke();
+        }
+
+        /// <summary>
+        /// Button Down click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonDown_Click(object sender, System.EventArgs e)
+        {
+            if (ClickButtonDownEvent != null)
+                ClickButtonDownEvent.Invoke();
+        }
+
+        /// <summary>
+        /// Button Back click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonBack_Click(object sender, System.EventArgs e)
+        {
+            if (ClickButtonBackEvent != null)
+                ClickButtonBackEvent.Invoke();
+        }
+
+        /// <summary>
+        /// Button Settings click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonSettings_Click(object sender, System.EventArgs e)
+        {
+            if (ClickButtonSettingsEvent != null)
+                ClickButtonSettingsEvent.Invoke();
+        }
+
+        /// <summary>
+        /// Action of Click on control event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ClickOnControl(object sender, System.EventArgs e)
+        {
+            if (ClickControlEvent != null)
+                ClickControlEvent.Invoke();
+        }
+
+        /// <summary>
+        /// Use for clear all control data
+        /// </summary>
+        public void ClearControlData()
+        {
+            if (InvokeRequired)
+                Invoke(new Action(() => { ClearControlDataInvoke(); }));
+            else ClearControlDataInvoke();
+        }
+
+        /// <summary>
+        /// Use for clear all control data
+        /// </summary>
+        private void ClearControlDataInvoke()
+        {
+            txtArticleValue.Text = "";
+            lblProductName.Text = "";
+            txtProductByShareInfo.Text = "";
+            txtBarcodeValue.Text = "";
+            txtPriceValue.Text = "";
+        }
+
+        /// <summary>
+        /// Use for set Article value
+        /// </summary>
+        /// <param name="vendorCode">Vendor Code string</param>
+        public void SetVendorCode(string vendorCode)
+        {
+            if (InvokeRequired)
+                Invoke(new Action(() => { txtArticleValue.Text = vendorCode; }));
+            else txtArticleValue.Text = vendorCode;
+        }
+
+        /// <summary>
+        /// Use for set Product info
+        /// </summary>
+        /// <param name="productInfo">Product Info string</param>
+        public void SetProductByShareInfo(string productInfo)
+        {
+            if (InvokeRequired)
+                Invoke(new Action(() => { txtProductByShareInfo.Text = productInfo; }));
+            else txtProductByShareInfo.Text = productInfo;
+        }
+
+        /// <summary>
+        /// Use for set Product name
+        /// </summary>
+        /// <param name="productName">Product Name string</param>
+        public void SetProductName(string productName)
+        {
+            if (InvokeRequired)
+                Invoke(new Action(() => { lblProductName.Text = productName; }));
+            else lblProductName.Text = productName;
+        }
+
+        /// <summary>
+        /// Use for set barcode value
+        /// </summary>
+        /// <param name="barCode">BarCode string</param>
+        public void SetBarCode(string barCode)
+        {
+            if (InvokeRequired)
+                Invoke(new Action(() => { txtBarcodeValue.Text = barCode; }));
+            else txtBarcodeValue.Text = barCode;
+        }
+
+        /// <summary>
+        /// Use for set product price
+        /// </summary>
+        /// <param name="price">Product Price string</param>
+        public void SetPrice(string price)
+        {
+            if (InvokeRequired)
+                Invoke(new Action(() => { txtPriceValue.Text = price; }));
+            else txtPriceValue.Text = price;
+        }
+
+        /// <summary>
+        /// Use for set system localization
+        /// </summary>
+        /// <param name="systemTranslationData">System Translation Data object</param>
+        public void Localize(SystemTranslationData systemTranslationData)
+        {
+            if (InvokeRequired)
+                Invoke(new Action(() => { LocalizeInvoke(systemTranslationData); }));
+            else LocalizeInvoke(systemTranslationData);
+        }
+
+        /// <summary>
+        /// Use for localize control text
+        /// </summary>
+        /// <param name="systemTranslationData">System Translation Data object</param>
+        private void LocalizeInvoke(SystemTranslationData systemTranslationData)
+        {
+            if (!string.IsNullOrEmpty(systemTranslationData.LblVendorCodeText))
+                lblArticle.Text = systemTranslationData.LblVendorCodeText;
+            else lblArticle.Text = "Article";
+
+            if (!string.IsNullOrEmpty(systemTranslationData.LblPriceText))
+                lblPrice.Text = systemTranslationData.LblPriceText;
+            else lblPrice.Text = "Price";
+
+            if (!string.IsNullOrEmpty(systemTranslationData.LblBarCodeText))
+                lblBarcode.Text = systemTranslationData.LblBarCodeText;
+            else lblBarcode.Text = "Barcode";
+
+            if (!string.IsNullOrEmpty(systemTranslationData.BtnUpText))
+                buttonUp.Text = systemTranslationData.BtnUpText;
+            else buttonUp.Text = "Up";
+
+            if (!string.IsNullOrEmpty(systemTranslationData.BtnDownText))
+                buttonDown.Text = systemTranslationData.BtnDownText;
+            else buttonDown.Text = "Down";
+
+            if (!string.IsNullOrEmpty(systemTranslationData.BtnBackText))
+                buttonBack.Text = systemTranslationData.BtnBackText;
+            else buttonBack.Text = "Back";
+
+            if (!string.IsNullOrEmpty(systemTranslationData.BtnSettingsText))
+                buttonSettings.Text = systemTranslationData.BtnSettingsText;
+            else buttonSettings.Text = "Language/Currency";
+        }
+
+        /// <summary>
+        /// Use for set image to Logo
+        /// </summary>
+        /// <param name="image">Logo Image</param>
+        public void SetLogoImage(Image image)
+        {
+            if (InvokeRequired)
+                Invoke(new Action(() => 
+                {
+                    if (image != null)
+                        pictureBoxLogo.Image = image;
+                }));
+            else
+            {
+                if (image != null)
+                    pictureBoxLogo.Image = image;
+            }            
+        }
+
+        #endregion
+    }
+}

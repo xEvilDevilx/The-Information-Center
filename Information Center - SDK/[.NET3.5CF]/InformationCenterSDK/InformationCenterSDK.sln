@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IC.SDK", "IC.SDK\IC.SDK.csproj", "{5A31EE60-A8FA-4E90-A268-C2D5F1110BFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IC.SDK.Base", "IC.SDK.Base\IC.SDK.Base.csproj", "{9C15EE0A-B606-4B21-A686-42B14D6F6134}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IC.SDK.Interfaces", "IC.SDK.Interfaces\IC.SDK.Interfaces.csproj", "{D99EA33E-3CBC-4939-983E-459815CCD38B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A31EE60-A8FA-4E90-A268-C2D5F1110BFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A31EE60-A8FA-4E90-A268-C2D5F1110BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A31EE60-A8FA-4E90-A268-C2D5F1110BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A31EE60-A8FA-4E90-A268-C2D5F1110BFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C15EE0A-B606-4B21-A686-42B14D6F6134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C15EE0A-B606-4B21-A686-42B14D6F6134}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C15EE0A-B606-4B21-A686-42B14D6F6134}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C15EE0A-B606-4B21-A686-42B14D6F6134}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D99EA33E-3CBC-4939-983E-459815CCD38B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D99EA33E-3CBC-4939-983E-459815CCD38B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D99EA33E-3CBC-4939-983E-459815CCD38B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D99EA33E-3CBC-4939-983E-459815CCD38B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

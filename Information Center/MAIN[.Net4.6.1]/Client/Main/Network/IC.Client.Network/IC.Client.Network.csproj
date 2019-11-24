@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CD4FE1BB-D2C4-441E-BDA4-F039D211A254}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IC.Client.Network</RootNamespace>
+    <AssemblyName>IC.Client.Network</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IC.LicenseManager.BusinessObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Build\ICLibs\IC.LicenseManager.BusinessObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="IC.LicenseManager.CryptoService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Build\ICLibs\IC.LicenseManager.CryptoService.dll</HintPath>
+    </Reference>
+    <Reference Include="IC.LicenseManager.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Build\ICLibs\IC.LicenseManager.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="IC.SDK">
+      <HintPath>..\..\..\..\Build\ICLibs\IC.SDK.dll</HintPath>
+    </Reference>
+    <Reference Include="IC.SDK.Base">
+      <HintPath>..\..\..\..\Build\ICLibs\IC.SDK.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="IC.SDK.Interfaces">
+      <HintPath>..\..\..\..\Build\ICLibs\IC.SDK.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyWorker.cs" />
+    <Compile Include="ConnectionStatus.cs" />
+    <Compile Include="MainEntry.cs" />
+    <Compile Include="Notifications\TCPLicenseVerify.cs" />
+    <Compile Include="Notifications\TCPNotification.cs" />
+    <Compile Include="Notifications\UDPNotification.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="NetworkRequests.cs" />
+    <Compile Include="TcpClientService.cs" />
+    <Compile Include="UdpClientService.cs" />
+    <Compile Include="NetworkTransfer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\BusinessLogic\IC.Client.BusinessLogic.Interfaces\IC.Client.BusinessLogic.Interfaces.csproj">
+      <Project>{4c8b2bd2-83c3-44a5-bba6-9b44203b9aa0}</Project>
+      <Name>IC.Client.BusinessLogic.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\BusinessLogic\IC.Client.BusinessLogic\IC.Client.BusinessLogic.csproj">
+      <Project>{38A96954-A1E2-404F-88B8-07B3879D7009}</Project>
+      <Name>IC.Client.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FormModel\IC.Client.FormModel.Base\IC.Client.FormModel.Base.csproj">
+      <Project>{f6a67912-03d0-4dd8-b39b-00e48bf5861e}</Project>
+      <Name>IC.Client.FormModel.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FormModel\IC.Client.FormModel.Interfaces\IC.Client.FormModel.Interfaces.csproj">
+      <Project>{f26d64e7-c323-4557-b3cd-a582aa576388}</Project>
+      <Name>IC.Client.FormModel.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IC.Client.DataLayer\IC.Client.DataLayer.csproj">
+      <Project>{e5d7fc70-a7d3-41a5-91e2-0387e831d08f}</Project>
+      <Name>IC.Client.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FormModel\IC.Client.FormModel\IC.Client.FormModel.csproj">
+      <Project>{308DF5F2-D393-47D0-8142-77BE9F10F88E}</Project>
+      <Name>IC.Client.FormModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IC.Client.Network.Interfaces\IC.Client.Network.Interfaces.csproj">
+      <Project>{4cbaa34c-274f-421a-af5e-1e99b9418fd3}</Project>
+      <Name>IC.Client.Network.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
