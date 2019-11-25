@@ -32,3 +32,11 @@ Deploying (for .net4.6.1 for example):
 6. Copy to the Terminal a built terminal solution and start it
 
 Sorry, but included docs has a russian language not translated to english
+
+</br>###################################################################################</br>
+If my source codes will be helpful for you, you can say Thanks by donation:</br>
+   Paypal donate: NewLifeMe@inbox.ru                                         
+   WebMoney RUB:  P952147548227                                              
+   WebMoney USD:  Z803202017434                                              
+   WebMoney EUR:  E848962499508                                              
+###################################################################################
