@@ -31,12 +31,5 @@ Deploying (for .net4.6.1 for example):
 5. Install, configure (set connection string to database in app config file) and start a server side Service
 6. Copy to the Terminal a built terminal solution and start it
 
-Sorry, but included docs has a russian language not translated to english
+Sorry, but included docs has a Russian language not translated to English
 
-</br>###################################################################################</br>
-If my source codes will be helpful for you, you can say Thanks by donation:</br>
-   Paypal donate: NewLifeMe@inbox.ru                                         
-   WebMoney RUB:  P952147548227                                              
-   WebMoney USD:  Z803202017434                                              
-   WebMoney EUR:  E848962499508                                              
-###################################################################################
